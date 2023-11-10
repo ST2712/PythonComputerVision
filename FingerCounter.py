@@ -1,4 +1,3 @@
-# Importación de las librerías necesarias
 import cv2
 import time
 import os
@@ -15,7 +14,7 @@ cap.set(4, hCam)  # Establecer la altura de la ventana de captura
 # Directorio donde se encuentran las imágenes a superponer
 folderPath = "FingerImages"
 myList = os.listdir(folderPath)  # Lista de archivos en el directorio
-print(myList)  # Imprimir la lista de imágenes
+# print(myList)  # Imprimir la lista de imágenes
 
 # Inicializar una lista para almacenar las imágenes de superposición
 overlayList = []
@@ -24,7 +23,7 @@ for imPath in myList:
     print(f'{folderPath}/{imPath}')  # Imprimir la ruta de cada imagen
     overlayList.append(image)  # Añadir la imagen a la lista de superposición
 
-print(len(overlayList))  # Imprimir la cantidad de imágenes cargadas
+# print(len(overlayList))  # Imprimir la cantidad de imágenes cargadas
 
 # Variables para calcular y mostrar los fotogramas por segundo (FPS)
 pTime = 0
@@ -39,6 +38,7 @@ tipIds = [4, 8, 12, 16, 20]
 while True:
     success, img = cap.read()  # Leer un fotograma de la cámara
     img = detector.findHands(img)  # Detectar y dibujar las manos en el fotograma
+    img = cv2.flip(img, 1) # Girar la imagen para evitar el modo espejo
     lmList = detector.findPosition(img, draw=False)  # Obtener la posición de las marcas de la mano
 
     # Si se encontraron marcas de la mano en la imagen
