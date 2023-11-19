@@ -105,7 +105,7 @@ while True:
     img = cv2.addWeighted(img, 0.5, imgCanvas, 0.5, 0)
 
     cv2.imshow("Image", img)
-    cv2.imshow("Canvas", imgCanvas)
+    # cv2.imshow("Canvas", imgCanvas)
     #cv2.imshow("Inv", imgInv)
     key = cv2.waitKey(1)
     # Si se presiona 'q' o 'Q', romper el bucle para salir de la aplicación
